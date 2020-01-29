@@ -14,3 +14,11 @@ class Informer(models.Model):
 	name = models.CharField(max_length=200)
 
 
+class KeywordTag(models.Model):
+	name = models.CharField(max_length=100)
+	TYPE_CHOICES = [
+		(1, 'Symptoms'),
+		(2, 'Sickness'),
+	]
+	type = models.IntegerField(choices=TYPE_CHOICES)
+
