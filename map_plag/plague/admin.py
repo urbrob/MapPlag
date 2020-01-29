@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Informer
+
+
+@admin.register(Informer)
+class InformerAdmin(admin.ModelAdmin):
+	list_display = ['api_key', 'lat', 'lan', 'street', 'street_number', 'city', 'name']
