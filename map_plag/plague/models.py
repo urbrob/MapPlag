@@ -22,3 +22,10 @@ class KeywordTag(models.Model):
 	]
 	type = models.IntegerField(choices=TYPE_CHOICES)
 
+
+class PlaguePointer(models.Model):
+	informer = models.ForeignKey(Informer, on_delete=models.CASCADE)
+	description = models.TextField(max_length=1000)
+	keyword_tag = models.ForeignKey(KeywordTag, on_delete=models.CASCADE)
+	date_time = models.DateTimeField(auto_now_add=True)
+	prescription = models.TextField(max_length=1000)
