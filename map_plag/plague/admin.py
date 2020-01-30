@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Informer, KeywordTag
+from .models import Informer, KeywordTag, PlaguePointer
 
 
 @admin.register(Informer)
@@ -11,3 +11,8 @@ class InformerAdmin(admin.ModelAdmin):
 @admin.register(KeywordTag)
 class KeywordTagAdmin(admin.ModelAdmin):
 	list_display = ['name', 'type']
+
+
+@admin.register(PlaguePointer)
+class PlaguePointerAdmin(admin.ModelAdmin):
+	pass
