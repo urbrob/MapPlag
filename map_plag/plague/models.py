@@ -32,3 +32,14 @@ class PlaguePointer(models.Model):
 
 	def __str__(self):
 		return keyword_tag.name + ', ' + informer.name
+
+
+class PlaguePointerKeyword(models.Model):
+	plague_pointer = models.ForeignKey(PlaguePointer, on_delete=models.CASCADE)
+	keyword_tag = models.ForeignKey(KeywordTag, on_delete=models.CASCADE)
+	trust_level = models.IntegerField(validators=[MinValueValidator(0)], default=0, null=True)
+
+	def __str__(self):
+		if keyword_tag.type is 'Sickness':
+			return 'Sickness, ' + trust_level + ' lvl, ' + keyword_tag.name + ', ' + plague_pointer.informer.name
+		return 'Symptom, ' + keyword_tag.name + ', ' + plague_pointer.informer.name
