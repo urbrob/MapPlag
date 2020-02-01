@@ -31,7 +31,7 @@ class PlaguePointer(models.Model):
 	prescription = models.TextField(max_length=1000)
 
 	def __str__(self):
-		return keyword_tag.name + ', ' + informer.name
+		return f'{ self.keyword_tag.name }, { self.informer.name }'
 
 
 class PlaguePointerKeyword(models.Model):
@@ -40,6 +40,6 @@ class PlaguePointerKeyword(models.Model):
 	trust_level = models.IntegerField(validators=[MinValueValidator(0)], default=0, null=True)
 
 	def __str__(self):
-		if keyword_tag.type is 'Sickness':
-			return 'Sickness, ' + trust_level + ' lvl, ' + keyword_tag.name + ', ' + plague_pointer.informer.name
-		return 'Symptom, ' + keyword_tag.name + ', ' + plague_pointer.informer.name
+		if self.keyword_tag.type is 'Sickness':
+			return f'Sickness, { self.trust_level } lvl, {self.keyword_tag.name }, { self.plague_pointer.informer.name }'
+		return f'Symptom, { self.keyword_tag.name }, { self.plague_pointer.informer.name }'
