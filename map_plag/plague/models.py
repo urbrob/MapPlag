@@ -31,4 +31,4 @@ class PlaguePointer(models.Model):
 	prescription = models.TextField(max_length=1000)
 
 	def __str__(self):
-		return keyword_tag.name + ', ' + informer.name
+		return f'{ self.keyword_tag.name }, { self.informer.name }''
