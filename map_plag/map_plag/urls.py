@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include
+
+from plague.views import KeywordViewSet
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('^api/keywords/', KeywordViewSet.as_view()),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
