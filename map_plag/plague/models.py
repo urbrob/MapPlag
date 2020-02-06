@@ -1,3 +1,5 @@
+import uuid
+
 from decimal import Decimal
 
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -5,7 +7,7 @@ from django.db import models
 
 
 class Informer(models.Model):
-	api_key = models.UUIDField(unique=True)
+	api_key = models.UUIDField(unique=True, default=uuid.uuid4)
 	lat = models.DecimalField(max_digits=10, decimal_places=8, validators=[MinValueValidator(Decimal('-90.0')), MaxValueValidator(Decimal('90.0'))], null=False)
 	lan = models.DecimalField(max_digits=11, decimal_places=8, validators=[MinValueValidator(Decimal('-180.0')), MaxValueValidator(Decimal('180.0'))], null=False)
 	street = models.CharField(max_length=200)
@@ -15,10 +17,12 @@ class Informer(models.Model):
 
 
 class KeywordTag(models.Model):
-	name = models.CharField(max_length=100)
+	TYPE_SYMPTOM = 1
+	TYPE_SICKNESS = 2
+	name = models.CharField(max_length=100, unique=True)
 	TYPE_CHOICES = [
-		(1, 'Symptoms'),
-		(2, 'Sickness'),
+		(TYPE_SYMPTOM, 'Symptoms'),
+		(TYPE_SICKNESS, 'Sickness'),
 	]
 	type = models.IntegerField(choices=TYPE_CHOICES)
 
@@ -40,6 +44,6 @@ class PlaguePointerKeyword(models.Model):
 	trust_level = models.IntegerField(validators=[MinValueValidator(0)], default=0, null=True)
 
 	def __str__(self):
-		if self.keyword_tag.type is 'Sickness':
+		if self.keyword_tag.type == 'Sickness':
 			return f'Sickness, { self.trust_level } lvl, {self.keyword_tag.name }, { self.plague_pointer.informer.name }'
 		return f'Symptom, { self.keyword_tag.name }, { self.plague_pointer.informer.name }'

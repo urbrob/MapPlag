@@ -8,4 +8,3 @@ class KeywordsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = KeywordTag
         fields = ['name', 'type']
-

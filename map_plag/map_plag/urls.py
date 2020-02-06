@@ -1,4 +1,4 @@
-"""map_plag URL Configuration
+'''map_plag URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -12,7 +12,7 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
+'''
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
@@ -22,6 +22,6 @@ from plague.views import KeywordViewSet
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('^api/keywords/', KeywordViewSet.as_view()),
+    url('^api/keywords/', KeywordViewSet.as_view(), name='keywords'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
