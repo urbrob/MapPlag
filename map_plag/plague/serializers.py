@@ -4,7 +4,7 @@ from rest_framework import serializers
 from .models import KeywordTag
 
 
-class KeywordsSerializer(serializers.HyperlinkedModelSerializer):
+class KeywordsSerializer(serializers.ModelSerializer):
     class Meta:
         model = KeywordTag
-        fields = ['name', 'type']
+        fields = ('name', 'type')

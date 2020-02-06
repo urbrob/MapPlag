@@ -9,7 +9,7 @@ from django.db import models
 class Informer(models.Model):
 	api_key = models.UUIDField(unique=True, default=uuid.uuid4)
 	lat = models.DecimalField(max_digits=10, decimal_places=8, validators=[MinValueValidator(Decimal('-90.0')), MaxValueValidator(Decimal('90.0'))], null=False)
-	lan = models.DecimalField(max_digits=11, decimal_places=8, validators=[MinValueValidator(Decimal('-180.0')), MaxValueValidator(Decimal('180.0'))], null=False)
+	lng = models.DecimalField(max_digits=11, decimal_places=8, validators=[MinValueValidator(Decimal('-180.0')), MaxValueValidator(Decimal('180.0'))], null=False)
 	street = models.CharField(max_length=200)
 	street_number = models.IntegerField(default=0)
 	city = models.CharField(max_length=200)
