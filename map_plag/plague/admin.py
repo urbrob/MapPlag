@@ -4,12 +4,12 @@ from .models import Informer, KeywordTag, PlaguePointer, PlaguePointerKeyword
 
 @admin.register(Informer)
 class InformerAdmin(admin.ModelAdmin):
-	list_display = ['api_key', 'lat', 'lan', 'street', 'street_number', 'city', 'name']
+	pass
 
 
 @admin.register(KeywordTag)
 class KeywordTagAdmin(admin.ModelAdmin):
-	list_display = ['name', 'type']
+	pass
 
 
 @admin.register(PlaguePointer)
