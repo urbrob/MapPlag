@@ -31,6 +31,16 @@ class PlaguePointerFactory(factory.django.DjangoModelFactory):
 
     informer = factory.SubFactory(InformerFactory)
     description = factory.Faker('word')
-    keyword_tag = factory.SubFactory(KeywordTagFactory)
     date_time = datetime.datetime(2019, 1, 1, tzinfo=pytz.UTC)
     prescription = factory.Faker('word')
+    lat = factory.fuzzy.FuzzyInteger(90)
+    lng = factory.fuzzy.FuzzyInteger(90)
+    #keyword_1 = factory.RelatedFactory('plague.factories.PlaguePointerKeywordFactory', 'keyword_tag')
+
+
+class PlaguePointerKeywordFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = PlaguePointerKeyword
+
+    plague_pointer = factory.SubFactory(PlaguePointerFactory)
+    keyword_tag = factory.SubFactory(KeywordTagFactory)

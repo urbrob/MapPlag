@@ -17,11 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include
 
-from plague.views import KeywordViewSet
+from plague.views import KeywordViewSet, PlaguePointerViewSet
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^api/keywords/', KeywordViewSet.as_view(), name='keywords'),
+    url('^api/plague/', PlaguePointerViewSet.as_view(), name='plague'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
