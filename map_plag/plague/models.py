@@ -44,8 +44,8 @@ class PlaguePointer(models.Model):
 	keyword_tag = models.ManyToManyField(KeywordTag, through=PlaguePointerKeyword)
 	date_time = models.DateTimeField(auto_now_add=True)
 	prescription = models.TextField(max_length=1000)
-	lat = models.DecimalField(max_digits=10, decimal_places=8, validators=[MinValueValidator(Decimal('-90.0')), MaxValueValidator(Decimal('90.0'))], null=False)
-	lng = models.DecimalField(max_digits=11, decimal_places=8, validators=[MinValueValidator(Decimal('-180.0')), MaxValueValidator(Decimal('180.0'))], null=False)
+	lat = models.FloatField(validators=[MinValueValidator(-90.0), MaxValueValidator(90)], null=False)
+	lng = models.FloatField(validators=[MinValueValidator(-180.0), MaxValueValidator(180)], null=False)
 
 	def __str__(self):
 		return f'{ self.keyword_tag.name }, { self.informer.name }'

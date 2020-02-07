@@ -42,18 +42,19 @@ class ApiTestCase(APITestCase):
         expected_response = {
             'Grypa': [
                 {
-                    'lng': 123.0,
-                    'lat': 123.0
+                    'lng': 10.0,
+                    'lat': 10.0
                 },
                 {
-                    'lng': 123.0,
-                    'lat': 123.0
+                    'lng': 10.0,
+                    'lat': 10.0
                 }
             ],
             'Koronawirus': [
                 {
-                    'lng': 123.0,
-                    'lat': 123.0
+                    'lng': 10.0,
+                    'lat': 10.0
                 }
             ]
         }
+        self.assertDictEqual(expected_response, response.json())
