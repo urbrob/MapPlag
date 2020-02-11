@@ -1,12 +1,14 @@
 import React from 'react';
 import GlobalStyle from 'theme/GlobalStyle';
 import PlagueMap from 'components/PlagueMap';
+import RootTemplate from 'templates/RootTemplate';
 
 const Root = () => (
   <>
     <GlobalStyle />
-    <h1>Here will be the map</h1>
-    <PlagueMap />
+    <RootTemplate>
+      <PlagueMap />
+    </RootTemplate>
   </>
 );
 
