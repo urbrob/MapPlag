@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Marker from 'components/map/Marker';
 import { API_KEY } from 'apiKey';
 
 class PlagueMap extends Component {
   state = {
-    key: API_KEY,
     data: {
       positions: [
         { lat: 52.230948, lng: 21.015608 },
@@ -43,12 +43,13 @@ class PlagueMap extends Component {
     return (
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: this.state.key }}
+          bootstrapURLKeys={{ key: API_KEY, libraries: ['visualization'] }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-          heatmapLibrary
           heatmap={this.state.data}
-        />
+        >
+          <Marker key={123} text="dupa" lat={52.239243} lng={20.995126} />
+        </GoogleMapReact>
       </div>
     );
   }
