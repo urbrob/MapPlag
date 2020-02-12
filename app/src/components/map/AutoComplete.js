@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
+  position: absolute;
+  margin: 10px;
+  z-index: 1051 !important;
+`;
+
+const StyledInput = styled.input`
+  padding: 15px 30px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: #e3e3e3;
+  border: 1px solid #d4d2d2;
+  border-radius: 50px;
+  height: 40px;
+  width: 200px;
+  ::placeholder {
+    letter-spacing: 1px;
+    color: #919191;
+  }
 `;
 
 class AutoComplete extends Component {
@@ -47,7 +60,7 @@ class AutoComplete extends Component {
   render() {
     return (
       <Wrapper>
-        <input
+        <StyledInput
           ref={ref => {
             this.searchInput = ref;
           }}
