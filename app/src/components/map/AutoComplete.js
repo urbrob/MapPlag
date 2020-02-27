@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { SizeBreakpoints } from 'theme/SizeBreakpoints';
 
 const Wrapper = styled.div`
   position: absolute;
-  margin: 10px;
   z-index: 1051 !important;
+
+  @media ${SizeBreakpoints.desktop} {
+    margin: 10px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -19,6 +23,12 @@ const StyledInput = styled.input`
   ::placeholder {
     letter-spacing: 1px;
     color: #919191;
+  }
+
+  @media ${SizeBreakpoints.mobile} {
+    margin: 10% 10px;
+    height: 35px;
+    width: 80%;
   }
 `;
 

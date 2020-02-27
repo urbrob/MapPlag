@@ -4,9 +4,15 @@ import styled from 'styled-components';
 import Sidebar from 'components/Sidebar';
 import PlagueMap from 'components/PlagueMap';
 import { REMOTE_HOST } from 'config';
+import { SizeBreakpoints } from 'theme/SizeBreakpoints';
 
 const StyledWrapper = styled.div`
-  padding-left: 150px;
+  @media ${SizeBreakpoints.desktop} {
+    padding-left: 150px;
+  }
+  @media ${SizeBreakpoints.mobile} {
+    margin-top: 15%;
+  }
 `;
 
 class RootMapComponent extends Component {
